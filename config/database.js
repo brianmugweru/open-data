@@ -1,3 +1,3 @@
 module.exports = {
-    "mongodb_url": "mongodb://localhost/opendata",
+    "mongodb_url": "mongodb://mongo:27017/opendata",
 }

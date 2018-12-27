@@ -6,4 +6,5 @@ var CountryModel = new Schema({
     name: { type: String, required: [true, 'Add country name']}
 });
 
-export default mongoose.model('countries', CountryModel);
+var Country = mongoose.model('countries', CountryModel);
+module.exports = Country;

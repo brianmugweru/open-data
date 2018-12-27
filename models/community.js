@@ -3,9 +3,11 @@ var Schema = mongoose.Schema;
 
 var CommunityModel = new Schema({
     name : { type: String, required: [true, 'Community name required']},
-    language : { type: String, required: [true, 'Important for translations']},
+    primary_language : { type: String, required: [true, 'Important for translations']},
+    secondary_languages: { type: String },
     location: [{type: Schema.Types.ObjectId, ref: 'Location' }],
     mine: [{type: Schema.Types.ObjectId, ref: 'Mine'}]
 });
 
-export default mongoose.model('communities', CommunityModel);
+var Community = mongoose.model('communities', CommunityModel);
+module.exports = Community;

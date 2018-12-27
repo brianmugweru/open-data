@@ -4,12 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var cors = require('cors');
+var bodyParser = require('body-parser');
 
 var db = require('./config/database');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-mongoose.connect(db.mongodb_url);
+mongoose.connect(db.mongodb_url, { useNewUrlParser: true });
 
 var app = express();
 
@@ -17,13 +19,20 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('/', (req, res) => {
+  return res.status(200).send('Welcome to api version 1.0');
+})
+app.use('/api/v1/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

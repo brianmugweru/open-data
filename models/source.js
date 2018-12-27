@@ -6,4 +6,5 @@ var SourceModel = new Schema({
     country: [{type: Schema.Types.ObjectId, ref: 'Country' }],
 });
 
-export default mongoose.model('sources', SourceModel);
+var Source = mongoose.model('sources', SourceModel);
+module.exports = Source;

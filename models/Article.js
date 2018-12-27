@@ -5,7 +5,8 @@ var ArticleModel = new Schema({
     code : {type: String, required: [true, 'Add article code']},
     source: [{type: Schema.Types.ObjectId, ref: 'Source' }],
     english: {type: String },
-    kheler: {type: String }
+    khmer: {type: String }
 });
 
-export default mongoose.model('articles', ArticleModel);
+var Article = mongoose.model('articles', ArticleModel);
+module.exports = Article;

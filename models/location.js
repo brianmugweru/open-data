@@ -6,4 +6,5 @@ var LocationModel = new Schema({
     country: [{type: Schema.Types.ObjectId, ref: 'Country' }]
 });
 
-export default mongoose.model('locations', LocationModel);
+var Location = mongoose.model('locations', LocationModel);
+module.exports = Location;

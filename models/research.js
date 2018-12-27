@@ -8,4 +8,5 @@ var ResearchModel = new Schema({
     metadata: {type: String },
 }, { timestamps: { createdAt: 'created_at' }});
 
-export default mongoose.model('research', ResearchModel);
+var Research = mongoose.model('research', ResearchModel);
+module.exports = Research;
